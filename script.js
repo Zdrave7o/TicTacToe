@@ -16,23 +16,24 @@ function selectSlot(player, slotValue, slot){
         const sortedArr = [];
         if(player === "player1"){
             player1Slots.push(slotValue);
+
             player1Slots.forEach(item => {
                 item = Number();
             })
+            player1Slots.sort((x, y) => x - y);
 
-            player1Slots.sort((x, y) => x - y)
-
-            player1Slots.forEach(item =>{
-                item = item.toString();
-            })
             let str = player1Slots.join("");
-            if(str.includes("123")){
+
+            slot.innerHTML = "<h1>X</h1>";
+            
+            if(str.includes("123") || str.includes("456") || str.includes("789")){
+                console.log("player 1 wins!");
+                return;
+            } else if(str.includes("147") || str.includes("258") || str.includes("369")){
                 console.log("player 1 wins!");
                 return;
             }
 
-
-            slot.innerHTML = "<h1>X</h1>";
             currentPlayer = "player2"
         } else{
             player2Slots.push(slotValue);
