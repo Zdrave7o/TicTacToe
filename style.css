@@ -9,3 +9,7 @@ body{
 .game-screen{
     min-height: 60vh;
 }
+
+.slot{
+    height:20vh;
+}
