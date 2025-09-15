@@ -1,5 +1,5 @@
 *{
-
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body{
@@ -9,6 +9,12 @@ body{
 .game-screen{
     min-height: 60vh;
 }
+
+@media only screen and (max-width: 500px) {
+    .game-screen{
+        min-height: 40vh;
+    }
+}   
 
 .slot{
     height:20vh;
