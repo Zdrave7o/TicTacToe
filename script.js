@@ -54,12 +54,18 @@ function selectSlot(player, currentArr, slotValue, slot) {
             console.log(`choice ${choice}`);
 
             currentArr = player2Slots;
+            documentSlots.forEach(slot => {
+                slot.onclick = () => {
+                    window.alert("please wait!");
+                }
+
+            })
 
             setTimeout(() => {
                 // code to run after 0.5 seconds
                 selectSlot(currentPlayer, currentArr, choice, documentSlots[Number(choice) - 1]);
-                activateSlotsEventListeners;
-            }, 50);
+                activateSlotsEventListeners();
+            }, 500);
 
         }
 
@@ -71,18 +77,16 @@ function selectSlot(player, currentArr, slotValue, slot) {
 
 function activateSlotsEventListeners() {
     documentSlots.forEach(slot => {
-        slot.addEventListener("click", () => {
+        slot.onclick = () => {
             let slotValue = slot.getAttribute("index");
             console.log(`clicked Value Element -> ${slotValue}`)
 
             let currentArr = currentPlayer === player1 ? player1Slots : player2Slots
 
             selectSlot(currentPlayer, currentArr, slotValue, slot);
-        })
+        }
 
     })
 }
 
-function getSlotValue(){
-    
-}
+
