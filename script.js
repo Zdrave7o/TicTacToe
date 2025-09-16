@@ -2,13 +2,16 @@ const player1Slots = [];
 const player2Slots = [];
 const slots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-const player1 = "Player1";
-const player2 = "computer";
+let player1 = "Player1";
+let player2 = "computer";
 let symbol = "X";
 
 let currentPlayer = player1;
 
 const documentSlots = document.querySelectorAll(".slot");
+const opponentBtn = document.querySelector("#opponentBtn");
+
+opponentBtn.onclick = changeOpponent;
 
 window.addEventListener("DOMContentLoaded", activateSlotsEventListeners);
 
@@ -87,6 +90,11 @@ function activateSlotsEventListeners() {
         }
 
     })
+}
+
+function changeOpponent(){
+    player2 === "computer"? player2 = "player2": player2 = "computer"
+    opponentBtn.innerHTML = player2 === "computer"? "Play With Person":"Play With Bot";
 }
 
 
