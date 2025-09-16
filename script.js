@@ -16,7 +16,6 @@ function selectSlot(player, currentArr, slotValue, slot){
     if(slots.includes(slotValue)){
         player === player1? symbol="X":symbol ="O";
 
-
         let removableIndex = slots.indexOf(slotValue);
         slots.splice(removableIndex, 1);
         console.log(`${currentPlayer} chose ${slotValue}`);
@@ -24,25 +23,27 @@ function selectSlot(player, currentArr, slotValue, slot){
 
         currentArr.push(slotValue);
 
-        currentArr.forEach(item => {
-            item = Number();
-        })
-        currentArr.sort((x, y) => x - y);
+        if (currentArr.includes("1") && currentArr.includes("2") && currentArr.includes("3") || 
+        currentArr.includes("4") && currentArr.includes("5") && currentArr.includes("6") || 
+        currentArr.includes("7") && currentArr.includes("8") && currentArr.includes("9") || 
+        currentArr.includes("1") && currentArr.includes("4") && currentArr.includes("7") ||
+        currentArr.includes("2") && currentArr.includes("5") && currentArr.includes("8") ||
+        currentArr.includes("3") && currentArr.includes("6") && currentArr.includes("9") ||
+        currentArr.includes("1") && currentArr.includes("5") && currentArr.includes("9") ||
+        currentArr.includes("3") && currentArr.includes("5") && currentArr.includes("7")){
+            let winInterval = setInterval(() => {
+                window.alert(`${currentPlayer} wins!`);
+                clearInterval(winInterval);
+                window.location.reload();
+            }, 50);
 
-        let str = currentArr.join("");
-
-        if (str.includes("123") || str.includes("456") || str.includes("789")) {
-            window.alert(`${currentPlayer} wins!`);
             return;
-        } else if (str.includes("1") && str.includes("4") && str.includes("7") ||
-            (str.includes("2") && str.includes("5") && str.includes("8")) ||
-            (str.includes("3") && str.includes("6") && str.includes("9"))) {
-            window.alert(`${currentPlayer} wins!`);
-            return;
-        } else if (str.includes("1") && str.includes("5") && str.includes("9") ||
-            (str.includes("3") && str.includes("5") && str.includes("7"))) {
-            window.alert(`${currentPlayer} wins!`);
-            return;
+        } else if(slots.length < 1){
+            let winInterval = setInterval(() => {
+                window.alert(`Draw!`);
+                clearInterval(winInterval);
+                window.location.reload();
+            }, 50);
         }
 
         currentPlayer = player === player1? player2:player1;

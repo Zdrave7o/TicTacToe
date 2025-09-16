@@ -3,11 +3,14 @@
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
+    background: #460066;
+    background: linear-gradient(90deg, rgba(70, 0, 102, 1) 0%, rgba(121, 9, 106, 1) 35%, rgba(115, 0, 255, 1) 100%);
 }
 
 .game-screen{
-    min-height: 60vh;
+    min-height: 100vh;
+    backdrop-filter: blur(10px);
 }
 
 @media only screen and (max-width: 500px) {
@@ -27,6 +30,12 @@ body{
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     transition: .3s;
 }
+
+@media only screen and (max-width: 500px) {
+    .slot{
+        height: 10vh;
+    }
+}  
 
 .slot:hover{
     transform: scale(1.05);
