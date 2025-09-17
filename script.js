@@ -10,6 +10,7 @@ let currentPlayer = player1;
 
 const documentSlots = document.querySelectorAll(".slot");
 const opponentBtn = document.querySelector("#opponentBtn");
+const opponentText = document.querySelector(".opponentText");
 
 opponentBtn.onclick = changeOpponent;
 
@@ -94,7 +95,8 @@ function activateSlotsEventListeners() {
 
 function changeOpponent(){
     player2 === "computer"? player2 = "player2": player2 = "computer"
-    opponentBtn.innerHTML = player2 === "computer"? "Play With Person":"Play With Bot";
+    opponentBtn.innerHTML = player2 === "computer"? "Play VS Person":"Play VS Bot";
+    opponentText.innerHTML = player2 === "computer"? "Current Opponent: BOT":`Current Opponent: ${player2}`;
 }
 
 
