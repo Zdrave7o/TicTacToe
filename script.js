@@ -55,6 +55,34 @@ function selectSlot(player, currentArr, slotValue, slot) {
         if (player2 === "computer" && player === player1) {
             currentPlayer = player2;
             let choice = slots[Math.floor(Math.random() * slots.length)];
+
+            if(player1Slots.includes("1")){
+                if(player1Slots.includes("2") && slots.includes("3")){
+
+                    choice = slots[slots.indexOf("3")];
+
+                } else if(player1Slots.includes("3") && slots.includes("2")){
+
+                    choice = slots[slots.indexOf("2")];
+
+                } else if(player1Slots.includes("4") && slots.includes("7")){
+
+                    choice = slots[slots.indexOf("7")];
+
+                } else if(player1Slots.includes("7") && slots.includes("4")){
+
+                    choice = slots[slots.indexOf("4")];
+
+                } else if(player1Slots.includes("5") && slots.includes("9")){
+
+                    choice = slots[slots.indexOf("9")];
+ 
+                } else if(player1Slots.includes("9") && slots.includes("5")){
+
+                    choice = slots[slots.indexOf("5")];
+
+                }
+            }
             console.log(`choice ${choice}`);
 
             currentArr = player2Slots;
@@ -92,6 +120,7 @@ function activateSlotsEventListeners() {
 
     })
 }
+
 
 function changeOpponent(){
     player2 === "computer"? player2 = "player2": player2 = "computer"
