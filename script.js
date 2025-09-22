@@ -1,6 +1,16 @@
 const player1Slots = [];
 const player2Slots = [];
 const slots = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+const winningCombos = [
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", "9"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
+    ["3", "6", "9"],
+    ["1", "5", "9"],
+    ["3", "5", "7"]
+];
 
 let player1 = "Player1";
 let player2 = "computer";
@@ -27,14 +37,7 @@ function selectSlot(player, currentArr, slotValue, slot) {
 
         currentArr.push(slotValue);
 
-        if (currentArr.includes("1") && currentArr.includes("2") && currentArr.includes("3") ||
-            currentArr.includes("4") && currentArr.includes("5") && currentArr.includes("6") ||
-            currentArr.includes("7") && currentArr.includes("8") && currentArr.includes("9") ||
-            currentArr.includes("1") && currentArr.includes("4") && currentArr.includes("7") ||
-            currentArr.includes("2") && currentArr.includes("5") && currentArr.includes("8") ||
-            currentArr.includes("3") && currentArr.includes("6") && currentArr.includes("9") ||
-            currentArr.includes("1") && currentArr.includes("5") && currentArr.includes("9") ||
-            currentArr.includes("3") && currentArr.includes("5") && currentArr.includes("7")) {
+        if (hasWinningCombo(currentArr)) {
             let winInterval = setInterval(() => {
                 window.alert(`${currentPlayer} wins!`);
                 clearInterval(winInterval);
@@ -56,33 +59,6 @@ function selectSlot(player, currentArr, slotValue, slot) {
             currentPlayer = player2;
             let choice = slots[Math.floor(Math.random() * slots.length)];
 
-            if(player1Slots.includes("1")){
-                if(player1Slots.includes("2") && slots.includes("3")){
-
-                    choice = slots[slots.indexOf("3")];
-
-                } else if(player1Slots.includes("3") && slots.includes("2")){
-
-                    choice = slots[slots.indexOf("2")];
-
-                } else if(player1Slots.includes("4") && slots.includes("7")){
-
-                    choice = slots[slots.indexOf("7")];
-
-                } else if(player1Slots.includes("7") && slots.includes("4")){
-
-                    choice = slots[slots.indexOf("4")];
-
-                } else if(player1Slots.includes("5") && slots.includes("9")){
-
-                    choice = slots[slots.indexOf("9")];
- 
-                } else if(player1Slots.includes("9") && slots.includes("5")){
-
-                    choice = slots[slots.indexOf("5")];
-
-                }
-            }
             console.log(`choice ${choice}`);
 
             currentArr = player2Slots;
@@ -128,4 +104,10 @@ function changeOpponent(){
     opponentText.innerHTML = player2 === "computer"? "Current Opponent: BOT":`Current Opponent: ${player2}`;
 }
 
+
+function hasWinningCombo(playerSlots) {
+    return winningCombos.some(combo =>
+        combo.every(slot => playerSlots.includes(slot))
+    );
+}
 
