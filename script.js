@@ -15,6 +15,7 @@ const winningCombos = [
 let player1 = "Player1";
 let player2 = "computer";
 let symbol = "X";
+let gameStarted = false;
 
 let currentPlayer = player1;
 
@@ -27,6 +28,12 @@ opponentBtn.onclick = changeOpponent;
 window.addEventListener("DOMContentLoaded", activateSlotsEventListeners);
 
 function selectSlot(player, currentPlayerArr, slotIndex, slot) {
+    gameRunning = true;
+    
+    if(gameRunning === true){
+        opponentBtn.disabled = true;
+    }
+
     if (slots.includes(slotIndex)) {
         player === player1 ? symbol = "X" : symbol = "O";
 
